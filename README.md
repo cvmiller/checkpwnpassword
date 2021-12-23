@@ -1,4 +1,4 @@
-# A Pwded Password Checker
+# A Pwned Password Checker
 
 With Data Breaches seemingly happening all the time, over the years, over **308 million passwords** have been exposed. Over **7 Billion data records** have been breached in 2021 alone [see securitymagazine article](https://www.securitymagazine.com/articles/96667-the-top-data-breaches-of-2021).
 
@@ -14,11 +14,11 @@ With Data Breaches seemingly happening all the time, over the years, over **308 
 
 ## Why should I use it?
 
-It is good for testing if your local device passwords are floating out on the internet. By ensuring that your *clear* password never leaves your machine (it is not written to any temporary files, either), you can feel confident entering your password, and not having it *collected* on some password checking website.
+It is good for testing if your local device passwords are floating out on the internet. By ensuring that your *clear* password never leaves your machine (or is written to any temporary files, either), you can feel confident entering your password, and not having it *collected* on some password checking website.
 
 ## Downloading checkpwnpassword.sh
 
-Download `checkpwnpassword.sh` to any directory (such as your home directory) and make it executable by:
+[Download `checkpwnpassword.sh`](https://raw.githubusercontent.com/cvmiller/checkpwnpassword/main/checkpwnpassword.sh) to any directory (such as your home directory) and make it executable by:
 
 `chmod 700 checkpwnpassword.sh`
 
@@ -38,7 +38,7 @@ $ ./checkpwnpassword.sh -h
 
 ### Running the script
 
-Your password can be entered in one of two ways, via the `-p mypassword` parameter, or interactively, typing the password in directly. The downside of using the `-p` option is that your password will be recorded in the shell history file, generally not desired, but it can be easier for scripting.
+Your password can be entered in one of two ways, via the `-p mypassword` parameter, or interactively, typing the password in directly. The downside of using the `-p` option is that your password will be recorded in the shell history file. This is generally not desired, but it can be easier for scripting.
 
 The second method is prefered, as your password will be assigned a variable in the script while the the script is running, and then will disappear at script termination. In operation it looks like this where I entered *123456* as the password:
 
@@ -74,8 +74,8 @@ For two reasons:
 
 The script requires the following, which is probably already installed on your Linux system:
 
-1. `sha1sum1` it checks for this before running
-2. `curl` the script also checks for this
+1. `sha1sum1` 
+2. `curl` 
 
 ## What the script doesn't do
 
