@@ -1,4 +1,4 @@
-# A Pwned Password Checker
+﻿# A Pwned Password Checker
 
 With Data Breaches seemingly happening all the time, over the years, over **308 million passwords** have been exposed. Over **7 Billion data records** have been breached in 2021 alone [see securitymagazine article](https://www.securitymagazine.com/articles/96667-the-top-data-breaches-of-2021).
 
@@ -40,7 +40,7 @@ $ ./checkpwnpassword.sh -h
 
 Your password can be entered in one of two ways, via the `-p mypassword` parameter, or interactively, typing the password in directly. The downside of using the `-p` option is that your password will be recorded in the shell history file. This is generally not desired, but it can be easier for scripting.
 
-The second method is prefered, as your password will be assigned a variable in the script while the the script is running, and then will disappear at script termination. In operation it looks like this where I entered *123456* as the password:
+The second method is preferred, as your password will be assigned a variable in the script while the the script is running, and then will disappear at script termination. In operation it looks like this where I entered *123456* as the password:
 
 ```
 $ ./checkpwnpassword.sh 
