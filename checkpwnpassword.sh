@@ -34,12 +34,12 @@ function usage {
 	       exit 1
            }
 
-VERSION=0.95
+VERSION=0.96
 
 # initialize some vars
 HAVEIBEENPWNED_API="https://api.pwnedpasswords.com/range/"
 
-
+GREP_OPT="colour"
 DEBUG=0
 PASSWORD=""
 
@@ -85,6 +85,13 @@ if [ $? -ne 0 ]; then
 	exit 1
 fi
 curl_cmd=$cmd_detect
+
+# detect if grep support --colour
+cmd_detect=$(grep --colour test /dev/null 2> /dev/null)
+if [ $? -gt 1 ]; then
+	echo "Note:grep does not support colour"
+	GREP_OPT=""
+fi
 
 # if password not on command line, then ask for it
 if [ "$PASSWORD" == "" ]; then
@@ -141,7 +148,11 @@ check_sha_result=$(echo "$result" | grep  "$test_sha1_tail")
 if [ $? -ne 0 ]; then
 	echo "Password appears safe, unknown to HAVEIBEENPWNED_API"
 else
-	echo "Password matches HAVEIBEENPWNED_API" | grep --colour ".*"
+	if [ "GREP_OPT" == "colour" ]; then
+		echo "Password matches HAVEIBEENPWNED_API" | grep --colour ".*"
+	else
+		echo "Password matches HAVEIBEENPWNED_API" 
+	fi
 	check_sha_result=$(echo "$result" | tr '\r' '\n' | grep "$test_sha1_tail" )
 	result_hash=$(echo "$check_sha_result" | cut -d ':' -f 1 )
 	result_amt=$(echo "$check_sha_result" | cut -d ':' -f 2 )
